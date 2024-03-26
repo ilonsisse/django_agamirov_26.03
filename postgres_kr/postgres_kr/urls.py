@@ -17,7 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from postgres_kr.example.api.place import create_place
+from postgres_kr.example.api.shop import create_shop
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls'))
+    path('api/place/create', create_place)
+    path('api/shop/create', create_shop)
+
 ]
