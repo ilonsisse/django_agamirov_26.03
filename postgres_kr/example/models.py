@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework.decorators import api_view
 
 
 class Place(models.Model):
@@ -11,6 +12,10 @@ class Place(models.Model):
 
     def __str__(self):
         return f'Район {self.name}'
+
+    @api_view(['POST']):
+        def create_place(self):
+            pass
 
 
 class Shop(models.Model):
