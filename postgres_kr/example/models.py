@@ -8,6 +8,7 @@ class Place(models.Model):
 
     name = models.CharField(max_length=100, verbose_name='Наименование')
     population = models.IntegerField(verbose_name='Население')
+    objects = models.Manager()
 
     def __str__(self):
         return f'Район {self.name}'
@@ -24,6 +25,7 @@ class Shop(models.Model):
     supervisor = models.CharField(max_length=64, verbose_name='Руководитель', blank=True, null=True)
     place = models.ForeignKey(to=Place, on_delete=models.PROTECT, verbose_name='Район')
     is_open = models.BooleanField(default=True, verbose_name='Открыт')
+    objects = models.Manager()
 
     def __str__(self):
         return f'Магазин {self.name}'
