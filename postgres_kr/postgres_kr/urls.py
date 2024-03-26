@@ -15,15 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from postgres_kr.example.api.place import create_place
 from postgres_kr.example.api.shop import create_shop
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))
-    path('api/place/create', create_place)
-    path('api/shop/create', create_shop)
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/place/create', create_place),
+    path('api/shop/create', create_shop),
+    path('', include('example.urls'))
 
 ]
