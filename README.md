@@ -33,8 +33,8 @@
 > py manage.py createsuperuser
 
 Если возникает ошибка, то мой суперпользователь:
-login: admin
-password: admin123456
+- login: admin
+- password: admin123456
 
 Перейдем в панель администратора на запущенном сайте:
 > http://127.0.0.1:8000/admin/
