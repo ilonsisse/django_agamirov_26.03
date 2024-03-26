@@ -17,19 +17,19 @@ def create_shop(request):
         else:
             return Response(status=status.HTTP_404_NOT_FOUND, data={
                 'ok': False,
-                'message': 'Place does not exist.'
+                'message': 'Место не существует.'
             })
 
         if Shop.objects.filter(name=data['name']).exists():
             return Response(status=status.HTTP_404_NOT_FOUND, data={
                 'ok': False,
-                'message': 'A shop with that name already exists'
+                'message': 'Магазин с таким именем уже существует'
             })
 
         new_shop = Shop(
             name=data['name'],
-            income_per_month =data['income_per_month'],
-            supervisor=data.get('supervisor', None)
+            income_per_month=data['income_per_month'],
+            supervisor=data.get('supervisor', None),
             place=current_place
         )
 
@@ -37,12 +37,12 @@ def create_shop(request):
 
         return Response(status=status.HTTP_200_OK, data={
             'ok': True,
-            'message': 'Shop successfully created',
+            'message': 'Магазин успешно создан',
             'id': new_shop.id
         })
 
     except KeyError as e:
         return Response(status=status.HTTP_400_BAD_REQUEST, data={
             'ok': False,
-            'message': 'Unexpected error'
+            'message': 'Непредвиденная ошибка'
         })
